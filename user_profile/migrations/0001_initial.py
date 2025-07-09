@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,12 +14,52 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='UserProfile',
+            name="UserProfile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('role', models.CharField(choices=[('admin', 'Admin'), ('project_manager', 'Project Manager'), ('developer', 'Developer'), ('responser', 'Responser'), ('STAKEHOLDER', 'Stakeholder'), ('CLIENT', 'Client')], default='developer', help_text='A função do usuário no sistema', max_length=20, verbose_name='função')),
-                ('phone_number', models.CharField(blank=True, help_text='Telefone do usuário', max_length=20, null=True, verbose_name='telefone')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Profile')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "role",
+                    models.CharField(
+                        choices=[
+                            ("admin", "Admin"),
+                            ("project_manager", "Project Manager"),
+                            ("developer", "Developer"),
+                            ("responser", "Responser"),
+                            ("STAKEHOLDER", "Stakeholder"),
+                            ("CLIENT", "Client"),
+                        ],
+                        default="developer",
+                        help_text="A função do usuário no sistema",
+                        max_length=20,
+                        verbose_name="função",
+                    ),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(
+                        blank=True,
+                        help_text="Telefone do usuário",
+                        max_length=20,
+                        null=True,
+                        verbose_name="telefone",
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Profile",
+                    ),
+                ),
             ],
         ),
     ]

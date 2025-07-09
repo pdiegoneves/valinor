@@ -5,7 +5,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
-
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, verbose_name=_("Profile"), on_delete=models.CASCADE
@@ -34,7 +33,6 @@ class UserProfile(models.Model):
         null=True,
         help_text="Telefone do usuário",
     )
-
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):

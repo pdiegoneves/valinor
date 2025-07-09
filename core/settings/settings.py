@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "authentication",
     "rest_framework_simplejwt",
     "user_profile",
+    "project",
 ]
 
 
@@ -109,4 +110,3 @@ SIMPLE_JWR = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
-
