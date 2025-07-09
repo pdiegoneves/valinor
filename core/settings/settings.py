@@ -17,7 +17,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "authentication",
     "rest_framework_simplejwt",
+    "user_profile",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -107,3 +109,5 @@ SIMPLE_JWR = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+AUTH_USER_MODEL = "user_profile.RegisterUser"
