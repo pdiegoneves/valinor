@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from user_profile.models.register_user import RegisterUser
+from user_profile.models.user_profile import UserProfile
 
 
-@admin.register(RegisterUser)
+@admin.register(UserProfile)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("email",)
+    list_display = ("user", "role")

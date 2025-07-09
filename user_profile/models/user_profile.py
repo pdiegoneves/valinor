@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
@@ -34,4 +37,16 @@ class UserProfile(models.Model):
 
 
     @receiver(post_save, sender=User)
-    def 
+    def create_user_profile(sender, instance, created, **kwargs):
+        try:
+            if created:
+                UserProfile.objects.create(user=instance)
+        except:
+            pass
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        try:
+            instance.profile.save()
+        except:
+            pass
