@@ -7,4 +7,9 @@ requires-python = ">=3.13"
 dependencies = [
     "django>=5.2.4",
     "djangorestframework>=3.16.0",
+    "djangorestframework-simplejwt>=5.5.0",
+    "loguru>=0.7.3",
+    "pytest>=8.4.1",
+    "pytest-django>=4.11.1",
+    "rest-framework-simplejwt>=0.0.2",
 ]
