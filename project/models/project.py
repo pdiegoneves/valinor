@@ -5,13 +5,14 @@ from django.utils.translation import gettext_lazy as _
 
 class Project(models.Model):
     name = models.CharField(_("Nome do projeto"), max_length=255)
-    description = models.TextField(_("Descrição do projeto", blank=True, null=True))
+    description = models.TextField(_("Descrição do projeto"), blank=True, null=True)
     project_manager = models.ForeignKey(
         User,
         verbose_name=_("Gerente do projeto"),
         on_delete=models.PROTECT,
         blank=True,
         null=True,
+        related_name="fk_project_user_project_manager",
     )
     responser = models.ForeignKey(
         User,
@@ -19,6 +20,7 @@ class Project(models.Model):
         on_delete=models.PROTECT,
         blank=True,
         null=True,
+        related_name="fk_project_user_responser",
     )
     developer = models.ForeignKey(
         User,
@@ -26,6 +28,7 @@ class Project(models.Model):
         on_delete=models.PROTECT,
         blank=True,
         null=True,
+        related_name="fk_project_user_developer",
     )
     stackholder = models.ForeignKey(
         User,
@@ -33,9 +36,11 @@ class Project(models.Model):
         on_delete=models.PROTECT,
         blank=True,
         null=True,
+        related_name="fk_project_user_stackholder",
     )
     client = models.ForeignKey(
-        User, verbose_name=_("Cliente"), on_delete=models.PROTECT, blank=True, null=True
+        User, verbose_name=_("Cliente"), on_delete=models.PROTECT, blank=True, null=True,
+        related_name="fk_project_user_project_client",
     )
     start_date = models.DateField(_("Data de início"), blank=True, null=True)
     estimated_end_date = models.DateField(
